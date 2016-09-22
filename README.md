@@ -1,6 +1,6 @@
-# Alpine Docker Image with USTC Mirror
+# Alpine Docker Image with Aliyun Mirror
 ================
-This Docker image is built from the official Alpine image with [USTC mirror](https://mirrors.ustc.edu.cn/).
+This Docker image is built from the official Alpine image with [Aliyun mirror](http://mirrors.aliyun.com/).
 
 Contributors
 -------------------
