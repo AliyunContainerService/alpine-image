@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# A shell script to gen Dockerfile for alpine with Aliyun mirror.
+
+if [ $# -ne 0 ];then
+  echo No param allowed.
+fi
+
+create_dockerfile(){
+  filename=Dockerfile
+  cd $1
+  echo "FROM alpine:$1">$filename 
+  echo "MAINTAINER snowdream <yanghui1986527@gmail.com>">>$filename  
+  echo "RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories">>$filename  
+  echo "$1/Dockerfile has been created."
+  echo 
+  cd ..
+}
+
+
+declare -a ALPINE_VERSIONS=(
+              "3.2"
+              "3.3"
+              "3.4"
+              "3.5")
+
+for version in ${ALPINE_VERSIONS[@]}
+do
+  if [ ! -d $version ];then
+    mkdir $version
+    create_dockerfile $version
+  fi
+done
